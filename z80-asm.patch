@@ -1,0 +1,15 @@
+diff -u z80-asm-2.4.1/console.c z80-asm-2.4.1-patched/console.c
+--- z80-asm-2.4.1/console.c	2004-06-09 09:20:13.000000000 -0400
++++ z80-asm-2.4.1-patched/console.c	2020-03-25 15:02:28.000000000 -0400
+@@ -220,9 +220,10 @@
+  t.c_cc[VMIN]=1;  /* get at least 1 character if read */
+  if (tcsetattr(fd_in, TCSANOW, &t))
+     exit((printf("Error: can't set terminal attributes\n"), 3));
++ c_cls();
++ c_refresh();
+  printf("\033[=3h"); /* choose color 80x25 resolution */
+  printf("\033[%dm",40+(a&7));
+- c_cls();
+  printf("\033[;H");
+  c_refresh();
+ #else

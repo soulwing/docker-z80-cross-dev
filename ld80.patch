@@ -1,0 +1,18 @@
+--- ld80.h.orig	2020-03-25 07:44:41.000000000 -0400
++++ ld80.h	2020-03-25 07:45:13.000000000 -0400
+@@ -1,3 +1,4 @@
++#include <stdint.h>
+ 
+ #define	NAMELEN		8
+ #define	MAX_SEGMENTS	128
+@@ -125,8 +126,8 @@
+ extern unsigned char usage_map[];
+ #define MARK_BYTE(a)	usage_map[(a)/8] |= 1 << ((a)%8)
+ #define MARKED(a)	(usage_map[(a)/8] & 1 << ((a)%8))
+-#define MARKED32(a)	(((long*)usage_map)[(a)/32] == 0xffffffff)
+-#define UNMARKED32(a)	(((long*)usage_map)[(a)/32] == 0)
++#define MARKED32(a)	(((uint32_t*)usage_map)[(a)/32] == 0xffffffff)
++#define UNMARKED32(a)	(((uint32_t*)usage_map)[(a)/32] == 0)
+ 
+ #ifdef WINHACK
+ #define __attribute__(x)
