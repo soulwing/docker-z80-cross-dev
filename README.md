@@ -17,6 +17,17 @@ The resulting container image has all of the following tools installed.
 * [binutils](https://www.gnu.org/software/binutils/) -- GNU binutils
 * [vim](https://www.vim.org/) -- VIM editor
 
+Licensing
+---------
+
+The container image specification in the `Dockerfile`, as well as the 
+`z80-bin` and `z80-ports` utilities contained in this repository are 
+licensed under the Apache License 2.0.
+
+The tools installed in the container are covered by a variety of open-source
+licenses. In your use of this container image, you are obliged to comply with
+the license terms of the tools that you choose to use for your work.
+
 Build the Image
 ---------------
 
