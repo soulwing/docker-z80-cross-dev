@@ -136,7 +136,7 @@ void dump_ports(uint8_t* p) {
 }
 
 int main() {
-  int fd = open(Z80_PORTS, O_CREAT | O_TRUNC | O_RDWR);
+  int fd = open(Z80_PORTS, O_CREAT | O_TRUNC | O_RDWR, 0644);
   if (fd == -1) {
     perror("open");
     exit(1);
