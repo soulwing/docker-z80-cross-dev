@@ -43,6 +43,11 @@ RUN cd /src/z80-ports && \
     make clean all && \
     cp z80-ports ${BUILD_DIR}/bin
 
+COPY z80-console/ /src/z80-console
+RUN cd /src/z80-console && \
+    make clean all && \
+    cp z80-console ${BUILD_DIR}/bin
+
 FROM debian:buster
 RUN mkdir /Z80 && \
     apt-get update && \
