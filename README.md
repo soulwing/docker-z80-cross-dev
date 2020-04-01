@@ -32,7 +32,7 @@ Build the Image
 ---------------
 
 ```
-docker image -t soulwing/z80 .
+docker image build -t soulwing/z80 .
 ```
 
 Use the Image
