@@ -22,7 +22,7 @@ RUN mkdir -p /src/zmac && \
     unzip zmac.zip && \
     cd src && \
     make clean zmac && \
-    cp zmac ${BUILD_DIR}/bin
+    cp zmac ${BUILD_DIR}/bin/
   
 COPY ld80.patch /src/ld80/
 RUN cd /src/ld80 && \
@@ -31,22 +31,23 @@ RUN cd /src/ld80 && \
     unzip ld80.zip && \
     patch < ld80.patch && \
     make && \
-    cp ld80 ${BUILD_DIR}/bin
+    cp ld80 ${BUILD_DIR}/bin/ && \
+    cp ld80.1 ${BUILD_DIR}/man/man1/
 
 COPY z80-bin/ /src/z80-bin
 RUN cd /src/z80-bin && \
     make clean all && \
-    cp z80-bin ${BUILD_DIR}/bin
+    cp z80-bin ${BUILD_DIR}/bin/
 
 COPY z80-ports/ /src/z80-ports
 RUN cd /src/z80-ports && \
     make clean all && \
-    cp z80-ports ${BUILD_DIR}/bin
+    cp z80-ports ${BUILD_DIR}/bin/
 
 COPY z80-console/ /src/z80-console
 RUN cd /src/z80-console && \
     make clean all && \
-    cp z80-console ${BUILD_DIR}/bin
+    cp z80-console ${BUILD_DIR}/bin/
 
 FROM debian:buster
 RUN mkdir /Z80 && \
