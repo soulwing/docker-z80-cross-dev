@@ -1,0 +1,4 @@
+*.o
+z80-bin/z80-bin
+z80-ports/z80-ports
+z80-console/z80-console
