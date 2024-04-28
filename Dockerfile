@@ -29,7 +29,7 @@ RUN cd /src/ld80 && \
     curl --silent --show-error --location --url http://48k.ca/ld80.zip \
          --output ld80.zip && \
     unzip ld80.zip && \
-    patch < ld80.patch && \
+#    patch < ld80.patch && \
     make && \
     cp ld80 ${BUILD_DIR}/bin/ && \
     cp ld80.1 ${BUILD_DIR}/man/man1/
@@ -51,8 +51,10 @@ RUN cd /src/z80-console && \
 
 FROM debian:buster
 RUN mkdir /Z80 && \
+    mkdir -p /usr/local && \
     apt-get update && \
     apt-get install -y gcc make sdcc binutils vim man
-COPY --from=build /build /usr/local
+COPY --from=build /build/bin /usr/local/bin
+COPY --from=build /build/man /usr/local/share/man
 WORKDIR /Z80
 CMD [ "/bin/bash" ]
